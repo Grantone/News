@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Trending News</title>
-  </head>
-  <body>
-    <div class="container">
-      <h3>Breaking News</h3>
+    <head>
+        <meta charset="utf-8">
+        {% if title %}
+        <title> {{ title }}</title>
+        {% else %}
+        <title> Welcome Wananchi News Review Web </title>
+        {% endif %}
+    </head>
+    <body>
 
-    </div>
-
-  </body>
+    </body>
 </html>
