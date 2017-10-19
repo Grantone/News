@@ -12,7 +12,10 @@ Source = source.Source
 
 
 # Getting the source base url
-base_url = app.config["SOURCE_API_BASE_URL"]
+# base_url = app.config["SOURCE_API_BASE_URL"]
+
+# Getting the article base url
+# base_url = app.config["ARTICLE_API_BASE_URL"]
 
 
 def get_source():
