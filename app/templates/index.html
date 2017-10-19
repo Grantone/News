@@ -10,6 +10,13 @@
     </head>
     <body>
       <h1>Welcome to wananchi News </h1>
+      <!-- Popular article section  -->
+        <h3>Trending News</h3>
+         <ul>
+            {% for popular_articles in popular %}
+                <li>{{ popular_articles.title}}</li>
+            {% endfor %}
+        </ul>
 
     </body>
 </html>
