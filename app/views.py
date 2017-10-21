@@ -1,7 +1,7 @@
 from flask import render_template
 from app import app
 from .request import get_source
-from .request import get_article
+from .request import get_articles
 
 # Views
 @app.route('/')
@@ -17,6 +17,23 @@ def index():
 
     title = 'Home - Welcome to Wananchi News Review Web'
     return render_template('index.html', title = title,popular = popular_articles)
+
+
+
+@app.route('/')
+def index():
+
+    '''
+    View root page function that returns the index page and its data
+    '''
+
+    # Getting popular movie
+    popular_sources = get_sources('popular')
+    print(popular_sources)
+    title = 'Home - Welcome to Wananchi Source Review Web'
+    return render_template('index.html', title = title,popular = popular_sources)
+
+
 
 
 @app.route('/article/<int:article_id>')
