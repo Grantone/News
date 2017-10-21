@@ -68,10 +68,10 @@ def process_results(source_list):
     Function  that processes the source result and transform them to a list of Objects
 
     Args:
-        source_list: A list of dictionaries that contain source details
+    source_list: A list of dictionaries thatcontain source details
 
     Returns :
-        source_results: A list of source objects
+    source_results: A list of source objects
     '''
     source_results = []
     for source_item in source_list:
@@ -95,10 +95,10 @@ def process_results(article_list):
     Function  that processes the article result and transform them to a list of Objects
 
     Args:
-        source_list: A list of dictionaries that contain article details
+    source_list: A list of dictionaries that contain article details
 
     Returns :
-        source_results: A list of article objects
+    source_results: A list of article objects
     '''
     article_results = []
     for article_item in article_list:
