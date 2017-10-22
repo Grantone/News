@@ -16,3 +16,10 @@ def save_review(self):
 @classmethod
 def clear_reviews(cls):
     Review.all_reviews.clear()
+    response = []
+
+    for review in cls.all_reviews:
+        if review.article_id == id:
+            response.append(review)
+
+        return response
