@@ -1,7 +1,7 @@
-from flask import render_template
+from flask import render_template,request,redirect,url_for
 from app import app
 from .request import get_source,get_source
-from .request import get_articles,get_article
+from .request import get_articles,get_article,search_article
 
 # Views
 @app.route('/')
@@ -27,9 +27,11 @@ def index():
     View root page function that returns the index page and its data
     '''
 
-    # Getting popular movie
+    # Getting popular article
     popular_sources = get_sources('popular')
-    print(popular_sources)
+    watched_article = get_articles('watched')
+    sports_article = get_articles('sports')
+    # print(popular_sources)
     title = 'Home - Welcome to Wananchi Source Review Web'
     return render_template('index.html', title = title,popular = popular_sources)
 
@@ -47,3 +49,15 @@ def article(article_id):
     title = f'{article}'
 
     return render_template('article.html',title = title,article = article)
+
+
+@app.route('/search/<article_name>')
+def search(article_name):
+    '''
+    View function to display the search results
+    '''
+    article_name_list = article_name.split(" ")
+    article_name_format = "+".join(article_name_list)
+    searched_articles = search_article(article_name_format)
+    title = f'search results for {article_name}'
+    return render_template('search.html',article = searched_articles)

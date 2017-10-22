@@ -40,4 +40,14 @@
         </ul>
 
 
+        {% block content %}
+
+        <div class="container">
+            <form>
+                <input type="text" name="article_query" placeholder="Search for a Article" class="form-control">
+                <input type="submit"  value="Go!" class="btn btn-default">
+            </form>
+
+        </div>
+
         {%endblock%}
