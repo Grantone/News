@@ -53,9 +53,10 @@ def article(article_id):
     '''
 
     article = get_article(id)
-    title = f'{article}'
+    title = f'{article.title}'
+    reviews = Review.get reviews(movie.id)
 
-    return render_template('article.html',title = title,article = article)
+    return render_template('article.html',title = title,article = article,reviews = reviews)
 
 
 @app.route('/search/<article_name>')
