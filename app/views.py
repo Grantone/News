@@ -33,7 +33,13 @@ def index():
     sports_article = get_articles('sports')
     # print(popular_sources)
     title = 'Home - Welcome to Wananchi Source Review Web'
-    return render_template('index.html', title = title,popular = popular_sources)
+
+    search_article = request.args.get('article_query')
+
+    if search_article:
+        return redirect(url_for('search',article_name=search_article))
+else:
+    return render_template('index.html', title = title,popular = popular_articles, watched =watched_article, sports = sports_article)
 
 
 
