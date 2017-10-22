@@ -52,12 +52,19 @@ def get_article():
 
         article_results = None
 
-        if get_articles_response['articles']:
-            article_results_list =get_results_response['articles']
-            article_results =process_articles(article_results_list)
+        if get_articles_response['articles'
+            id = article_details_response.get('id')
+            title =                             article_details_response.get('original_title')
+            overview = article_details_response.get('overview')
+            poster = article_details_response.get('poster_path')
+            vote_average = article_details_response.get('poster_path')
+            vote_count = article_details_response.get('vote_count')
+
+            article_object = Article(id,title,overview,poster,vote_average,vote_count)
 
 
-    return article_results
+
+    return article_object
 
 
 
@@ -114,3 +121,20 @@ def process_results(article_list):
             article_results.append(article_object)
 
     return article_results
+
+
+
+def search_article(article_name):
+    search_article_url = "https://techcrunch.com/2017/10/20/apple-and-att-activate-provisional-lte-band-8-to-give-iphone-users-in-puerto-rico-cellular-service/,{}&query={}".format(api_key,article_name)
+    with urllib.request.urlopen(search_article_url) as url:
+        search_article_data = url.read()
+        search_article_response = json.loads(search_article_data)
+
+        search_article_results = None
+
+        if search_article_response['results']:
+            search_article_list = search_article_response['results']
+            search_article_results = process_results(search_article_list)
+
+
+    return search_article_results
