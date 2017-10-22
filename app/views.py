@@ -75,7 +75,7 @@ def search(article_name):
 @app.route('/article/review/new/<int:id>', methods = ['GET','POST'])
 def new_review(id):
     form = ReviewForm()
-    movie = get_article(id)
+    article = get_article(id)
 
     if form.validate_on_submit():
         title = form.title.data
