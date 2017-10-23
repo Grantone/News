@@ -54,7 +54,7 @@ def article(article_id):
 
     article = get_article(id)
     title = f'{article.title}'
-    reviews = Review.get reviews(movie.id)
+    reviews = Review.get reviews(article.id)
 
     return render_template('article.html',title = title,article = article,reviews = reviews)
 
