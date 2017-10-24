@@ -1,11 +1,11 @@
 from flask import render_template, request, redirect, url_for
-from ..request import get_articles, get_article, search_article
+from ..request import get_articles, get_article, search_article,get_sources, get_source, search_source
 from ..models import Review
 from .forms import ReviewForm
 from . import main
 
 # Views
-@app.route('/')
+@main.route('/')
 def index():
 
     '''
@@ -21,7 +21,7 @@ def index():
 
 
 
-@app.route('/')
+@main.route('/')
 def index():
 
     '''
@@ -33,7 +33,7 @@ def index():
     watched_article = get_articles('watched')
     sports_article = get_articles('sports')
     # print(popular_sources)
-    title = 'Home - Welcome to Wananchi Source Review Web'
+    title = 'Home - Welcome to Wananchi News Review Web'
 
     search_article = request.args.get('article_query')
 
@@ -45,7 +45,7 @@ else:
 
 
 
-@app.route('/article/<int:article_id>')
+@main.route('/article/<int:article_id>')
 def article(article_id):
 
     '''
@@ -59,7 +59,7 @@ def article(article_id):
     return render_template('article.html',title = title,article = article,reviews = reviews)
 
 
-@app.route('/search/<article_name>')
+@main.route('/search/<article_name>')
 def search(article_name):
     '''
     View function to display the search results
@@ -73,7 +73,7 @@ def search(article_name):
 
 
 
-@app.route('/article/review/new/<int:id>', methods = ['GET','POST'])
+@main.route('/article/review/new/<int:id>', methods = ['GET','POST'])
 def new_review(id):
     form = ReviewForm()
     article = get_article(id)
@@ -87,3 +87,19 @@ def new_review(id):
 
     title = f'{article.title} review'
     return render_template('new_review.html',title = title, review_form=form, article=article)
+
+
+@main.route('/source/review/new/<int:id>', methods = ['GET','POST'])
+def new_review(id):
+    form = ReviewForm()
+    article = get_source(id)
+
+    if form.validate_on_submit():
+        title = form.title.data
+        review = form.review.data
+        new_review = Review(source.id,title,source.poster,review)
+        new_review.save_review()
+        return redirect(url_for('source',id = source.id ))
+
+    title = f'{source.title} review'
+    return render_template('new_review.html',title = title, review_form=form, source=source)

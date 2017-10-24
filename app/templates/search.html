@@ -6,13 +6,20 @@
 
         <div class="row">
 
-            <h3> Found {{ articles| count }} matches </h3>
+            <h3> Found {{ sources| count }} matches </h3>
             <hr>
             <ul>
-                {{ macro.displayArticleList(articles)}}
+                {{ macro.displaySourceList(sources)}}
             </ul>
 
         </div>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 source-details">
+            <h3>{{ source.title }}</h3>
 
-    </div>
+            <p class="overview"> {{ source.overview }}</p>
+
+            <p class="ratings"> <b> {{ source.vote_average }}</b> - <i>{{ source.vote_count}} votes </i> </p>
+        <a class="ratings" href="/source/review/new/{{source.id}}"> Write a new review</a>
+      </div>
+</div>
 {% endblock %}

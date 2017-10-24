@@ -23,3 +23,15 @@ def clear_reviews(cls):
             response.append(review)
 
         return response
+
+
+@classmethod
+def clear_reviews(cls):
+    Review.all_reviews.clear()
+    response = []
+
+    for review in cls.all_reviews:
+        if review.source_id == id:
+            response.append(review)
+
+        return response
