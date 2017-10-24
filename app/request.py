@@ -124,7 +124,7 @@ def process_results(article_list):
 
 
 def search_article(article_name):
-    search_article_url = "https://techcrunch.com/2017/10/20/apple-and-att-activate-provisional-lte-band-8-to-give-iphone-users-in-puerto-rico-cellular-service/,{}&query={}".format(api_key,article_name)
+    search_article_url = 'https://api.thearticledb.org/3/search/article?api_key={}&query={}'.format(api_key,article_name)
     with urllib.request.urlopen(search_article_url) as url:
         search_article_data = url.read()
         search_article_response = json.loads(search_article_data)
