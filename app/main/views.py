@@ -11,17 +11,16 @@ def index():
     '''
     View root page function that returns the index page and its data
     '''
-    # Getting popular articles
-    popular_articles = get_articles('popular')
-    print(popular_articles)
+    # Getting popular
+    sources = get_sources()
 
 
     title = 'Home - Welcome to Wananchi News Review Web'
-    return render_template('index.html', title = title,popular = popular_articles)
+    return render_template('index.html', title = title, sources = sources)
 
 
 
-@main.route('/')
+@main.route('/articles')
 def index():
 
     '''

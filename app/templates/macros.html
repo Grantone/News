@@ -12,11 +12,11 @@
 
 
     {% endfor %}
-    {% macro displayReviews(review_list) %}
-    {% for review in review_list %}
-    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 review-card">
-        <h2> {{ review.title}} </h2>
-        <p> {{ review.review | truncate(30) }}</p>
+    
+    {% macro displaySourcesList(sources_list) %}
+    {% for source in sources_list %}
+    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 sources-card">
+        <h2><a href="/articles/{{source.id}}"> {{source.title}} </a></h2>
     </div>
     {% endfor %}
 

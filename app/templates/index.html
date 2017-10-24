@@ -1,16 +1,6 @@
 {% extends 'base.html'%}
 {% import 'macros.html' as macro%}
 
-<!-- <div id="mySidenav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="#">Trending News</a>
-        <a href="#">Most Watched</a>
-        <a href="#">Sports</a>
-</div> -->
-
-
-
-
 <!-- Styles block -->
 
 {% block styles%}
@@ -23,31 +13,9 @@
 
 
       <h1>Welcome to wananchi News </h1>
-      <!-- Popular article section  -->
-        <h3>Trending News</h3>
+      <!-- Popular sources section  -->
+        <h3>News Sources</h3>
          <ul>
-          {{ macro.displayArticleList(popular)}}
+          {{ macro.displaySourcesList(sources)}}
         </ul>
-
-        <!-- Most Watched -->
-        <h3>Most Watched</h3>
-        <ul>
-          {{ macro.displayArticleList(watched)}}
-        </ul>
-        <h3>Sports</h3>
-        <ul>
-          {{ macro.displayArticleList(sports)}}
-        </ul>
-
-
-        {% block content %}
-
-        <div class="jumbotron">
-            <form>
-                <input type="text" name="article_query" placeholder="Search for a Article" class="form-control">
-                <input type="submit"  value="Go!" class="btn btn-default">
-            </form>
-
-        </div>
-
-        {%endblock%}
+{% endblock %}

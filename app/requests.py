@@ -1,39 +1,24 @@
 import urllib.request,json
-from .models import article,source
-
-Article = article.Article
-Source = source.Source
-
+from .models import Article, Source
 
 # Getting api key
 api_key = None
-# Getting the movie base url
-base_url = None
+# Getting the source base url
+source_base_url = None
+article_base_url = None
 
 def configure_request(app):
-    global api_key,base_url
+    global api_key,source_base_url
     api_key = app.config['NEWS_API_KEY']
-    base_url = app.config['NEWS_API_BASE_URL']
+    source_base_url = app.config['NEWS_SOURCES_API_BASE_URL']
+    article_base_url = app.config'[NEWS_ARTICLES_API_BASE_URL']
 
-
-
-# Getting api key
-# api_key = app.config['NEWS_API_KEY']
-
-
-# Getting the source base url
-# base_url = app.config["SOURCE_API_BASE_URL"]
-
-# Getting the article base url
-# base_url = app.config["ARTICLE_API_BASE_URL"]
-
-
-def get_source():
+def get_sources():
     '''
     Function that gets the json response to our url request
     '''
 
-    with urllib.request.urlopen(get_sources_url) as url:
+    with urllib.request.urlopen(source_base_url) as url:
         get_sources_url_data = url.read()
         get_sources_response = json.loads(get_sources_data)
 
@@ -47,40 +32,7 @@ def get_source():
     return source_results
 
 
-
-    # Getting the article base url
-    base_url = app.config['ARTICLE_API_BASE_URL']
-
-def get_article():
-    '''
-    Function that gets the json response to our urlrequest
-    '''
-
-    with urllib.request.urlopen(get_articles_url) as url:
-        get_articles_url_data = url.read()
-        get_articles_response =json.loads(get_articless_data)
-
-        article_results = None
-
-        if get_articles_response['articles'
-            id = article_details_response.get('id')
-            title =                             article_details_response.get('original_title')
-            overview = article_details_response.get('overview')
-            poster = article_details_response.get('poster_path')
-            vote_average = article_details_response.get('poster_path')
-            vote_count = article_details_response.get('vote_count')
-
-            article_object = Article(id,title,overview,poster,vote_average,vote_count)
-
-
-
-    return article_object
-
-
-
-
-
-def process_results(source_list):
+def process_sources(source_list):
     '''
     Function  that processes the source result and transform them to a list of Objects
 
@@ -104,8 +56,30 @@ def process_results(source_list):
 
     return source_results
 
+def get_articles():
+    '''
+    Function that gets the json response to our urlrequest
+    '''
+
+    with urllib.request.urlopen(get_articles_url) as url:
+        get_articles_url_data = url.read()
+        get_articles_response =json.loads(get_articless_data)
+
+        article_results = None
+
+        if get_articles_response['articles'
+            id = article_details_response.get('id')
+            title =                             article_details_response.get('original_title')
+            overview = article_details_response.get('overview')
+            poster = article_details_response.get('poster_path')
+            vote_average = article_details_response.get('poster_path')
+            vote_count = article_details_response.get('vote_count')
+
+            article_object = Article(id,title,overview,poster,vote_average,vote_count)
 
 
+
+    return article_object
 
 def process_results(article_list):
     '''
