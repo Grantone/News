@@ -1,27 +1,25 @@
-class Article:
+class Articles:
     '''
     article class to define article Objects
     '''
 
-    def __init__(self,id,title,overview,poster,vote_average,vote_count):
-        self.id =id
+    def __init__(self,author,title,description,urlToImage,image,publishedAt):
+        self.author =author
         self.title = title
-        self.overview = overview
-        self.poster = "https://newsapi.org/v1/articles" + poster
-        self.vote_average = vote_average
-        self.vote_count = vote_count
+        self.description = description
+        self.urlToImage = urlToImage
+        self.image = image
+        self.publishedAt = publishedAt
 
 
-
-class Source:
+class Sources:
     '''
     Source class to define Source Objects
     '''
 
-    def __init__(self,id,title,overview,poster,vote_average,vote_count):
+    def __init__(self,id,name,description,source,vote_average,vote_count):
         self.id =id
-        self.title = title
-        self.overview = overview
-        self.poster = "https://newsapi.org/v1/sources" + poster
-        self.vote_average = vote_average
-        self.vote_count = vote_count
+        self.name = name
+        self.description = description
+        self.source = source
+        self.category = category

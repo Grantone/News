@@ -10,12 +10,25 @@
 <!-- Content block -->
 
 {% block content %}
+<div class="jumbotron">
 
+ <div class="row">
 
       <h1>Welcome to wananchi News </h1>
       <!-- Popular sources section  -->
         <h3>News Sources</h3>
          <ul>
-          {{ macro.displaySourcesList(sources)}}
+          {{ macro.displaySourceList(source)}}
         </ul>
+  </div>
+<div class="row">
+
+<h3>News Articles</h3>
+<ul>
+  {{macro.displayArticleList(news)}}
+</ul>
+
+</div>
+
+</div>
 {% endblock %}

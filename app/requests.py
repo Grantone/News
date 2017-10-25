@@ -1,5 +1,5 @@
 import urllib.request,json
-from .models import Article, Source
+from .models import Articles, Sources
 
 # Getting api key
 api_key = None
@@ -10,10 +10,12 @@ article_base_url = None
 def configure_request(app):
     global api_key,source_base_url
     api_key = app.config['NEWS_API_KEY']
+
+    # Article and Sourse base APIs
     source_base_url = app.config['NEWS_SOURCES_API_BASE_URL']
     article_base_url = app.config'[NEWS_ARTICLES_API_BASE_URL']
 
-def get_sources():
+def get_source():
     '''
     Function that gets the json response to our url request
     '''
@@ -24,15 +26,15 @@ def get_sources():
 
         source_results = None
 
-        if get_sources_response['sources']:
+        if get_source_response['sources']:
             source_results_list = get_results_response['sources']
-            source_results = process_sources(source_results_list)
+            source_results = process_source_result(source_result_list)
 
 
     return source_results
 
 
-def process_sources(source_list):
+def process_source_result(source_list):
     '''
     Function  that processes the source result and transform them to a list of Objects
 
@@ -50,38 +52,42 @@ def process_sources(source_list):
         url = source_item.get('url')
         category = source_item.get('category')
 
-        if name:
-            source_object = Source(id,name,description,url,category)
-            source_results.append(source_object)
+        # if name:
+        #     source_object = Source(id,name,description,url,category)
+        #     source_results.append(source_object)
 
     return source_results
 
-def get_articles():
+def get_article(source):
+
+        get_article_url = article_url.format(source,api_key)
+        print(get_article_url)
+
     '''
     Function that gets the json response to our urlrequest
     '''
 
-    with urllib.request.urlopen(get_articles_url) as url:
-        get_articles_url_data = url.read()
-        get_articles_response =json.loads(get_articless_data)
+    with urllib.request.urlopen(get_article_url) as url:
+        get_article_url_data = url.read()
+        get_articles_response =json.loads(get_article_data)
 
         article_results = None
 
-        if get_articles_response['articles'
+        if get_article_response['articles']
             id = article_details_response.get('id')
-            title =                             article_details_response.get('original_title')
-            overview = article_details_response.get('overview')
-            poster = article_details_response.get('poster_path')
-            vote_average = article_details_response.get('poster_path')
-            vote_count = article_details_response.get('vote_count')
+            title =                             article_results_response.get('article_result')
+            # overview = article_details_response.get('overview')
+            # poster = article_details_response.get('poster_path')
+            # vote_average = article_details_response.get('poster_path')
+            # vote_count = article_details_response.get('vote_count')
 
-            article_object = Article(id,title,overview,poster,vote_average,vote_count)
+            # article_object = Article(id,title,overview,poster,vote_average,vote_count)
 
 
 
     return article_object
 
-def process_results(article_list):
+def process_results(articles_list):
     '''
     Function  that processes the article result and transform them to a list of Objects
 
@@ -92,7 +98,8 @@ def process_results(article_list):
     source_results: A list of article objects
     '''
     article_results = []
-    for article_item in article_list:
+
+    for article_item in articles_list:
         author = article_item.get('author')
         title = article_item.get('title')
         description = article_item.get('description')
@@ -104,6 +111,7 @@ def process_results(article_list):
             article_object = Article(author,title,description,urlToImage,publishedAt,time)
             article_results.append(article_object)
 
+    print(article_object)
     return article_results
 
 
