@@ -66,37 +66,3 @@ def search(article_name):
     searched_articles = search_article(article_name_format)
     title = f'search results for {article_name}'
     return render_template('search.html',article = searched_articles)
-
-
-
-#
-# @main.route('/article/review/new/<int:id>', methods = ['GET','POST'])
-# def new_review(id):
-#     form = ReviewForm()
-#     article = get_article(id)
-#
-#     if form.validate_on_submit():
-#         title = form.title.data
-#         review = form.review.data
-#         new_review = Review(article.id,title,article.poster,review)
-#         new_review.save_review()
-#         return redirect(url_for('article',id = article.id ))
-#
-#     title = f'{article.title} review'
-#     return render_template('new_review.html',title = title, review_form=form, article=article)
-#
-#
-# @main.route('/source/review/new/<int:id>', methods = ['GET','POST'])
-# def new_review(id):
-#     form = ReviewForm()
-#     article = get_source(id)
-#
-#     if form.validate_on_submit():
-#         title = form.title.data
-#         review = form.review.data
-#         new_review = Review(source.id,title,source.poster,review)
-#         new_review.save_review()
-#         return redirect(url_for('source',id = source.id ))
-#
-#     title = f'{source.title} review'
-#     return render_template('new_review.html',title = title, review_form=form, source=source)
