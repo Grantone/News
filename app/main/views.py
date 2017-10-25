@@ -1,7 +1,5 @@
 from flask import render_template, request, redirect, url_for
 from ..request import get_articles, get_article, search_article,get_sources, get_source, search_source
-from ..models import Review
-from .forms import ReviewForm
 from . import main
 
 # Views
@@ -71,34 +69,34 @@ def search(article_name):
 
 
 
-
-@main.route('/article/review/new/<int:id>', methods = ['GET','POST'])
-def new_review(id):
-    form = ReviewForm()
-    article = get_article(id)
-
-    if form.validate_on_submit():
-        title = form.title.data
-        review = form.review.data
-        new_review = Review(article.id,title,article.poster,review)
-        new_review.save_review()
-        return redirect(url_for('article',id = article.id ))
-
-    title = f'{article.title} review'
-    return render_template('new_review.html',title = title, review_form=form, article=article)
-
-
-@main.route('/source/review/new/<int:id>', methods = ['GET','POST'])
-def new_review(id):
-    form = ReviewForm()
-    article = get_source(id)
-
-    if form.validate_on_submit():
-        title = form.title.data
-        review = form.review.data
-        new_review = Review(source.id,title,source.poster,review)
-        new_review.save_review()
-        return redirect(url_for('source',id = source.id ))
-
-    title = f'{source.title} review'
-    return render_template('new_review.html',title = title, review_form=form, source=source)
+#
+# @main.route('/article/review/new/<int:id>', methods = ['GET','POST'])
+# def new_review(id):
+#     form = ReviewForm()
+#     article = get_article(id)
+#
+#     if form.validate_on_submit():
+#         title = form.title.data
+#         review = form.review.data
+#         new_review = Review(article.id,title,article.poster,review)
+#         new_review.save_review()
+#         return redirect(url_for('article',id = article.id ))
+#
+#     title = f'{article.title} review'
+#     return render_template('new_review.html',title = title, review_form=form, article=article)
+#
+#
+# @main.route('/source/review/new/<int:id>', methods = ['GET','POST'])
+# def new_review(id):
+#     form = ReviewForm()
+#     article = get_source(id)
+#
+#     if form.validate_on_submit():
+#         title = form.title.data
+#         review = form.review.data
+#         new_review = Review(source.id,title,source.poster,review)
+#         new_review.save_review()
+#         return redirect(url_for('source',id = source.id ))
+#
+#     title = f'{source.title} review'
+#     return render_template('new_review.html',title = title, review_form=form, source=source)
