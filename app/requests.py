@@ -4,21 +4,22 @@ from .models import Articles, Sources
 # Getting api key
 api_key = None
 # Getting the source base url
-source_base_url = None
-article_base_url = None
+# source_base_url = None
+# article_base_url = None
 
 def configure_request(app):
     global api_key,source_base_url
     api_key = app.config['NEWS_API_KEY']
 
     # Article and Sourse base APIs
-    source_base_url = app.config['NEWS_SOURCES_API_BASE_URL']
-    article_base_url = app.config'[NEWS_ARTICLES_API_BASE_URL']
+    # source_base_url = app.config['NEWS_SOURCES_API_BASE_URL']
+    # article_base_url = app.config'[NEWS_ARTICLES_API_BASE_URL']
 
 def get_source():
     '''
     Function that gets the json response to our url request
     '''
+    get_sources_url = 'https://newsapi.org/v1/sources'.format(category,api_key)
 
     with urllib.request.urlopen(source_base_url) as url:
         get_sources_url_data = url.read()
@@ -52,15 +53,15 @@ def process_source_result(source_list):
         url = source_item.get('url')
         category = source_item.get('category')
 
-        # if name:
-        #     source_object = Source(id,name,description,url,category)
-        #     source_results.append(source_object)
+
+        source_object = Source(id,name,description,url,category)
+        source_results.append(source_object)
 
     return source_results
 
 def get_article(source):
 
-        get_article_url = article_url.format(source,api_key)
+        get_article_url = 'https://newsapi.org/v1/articles?source={}&apiKey={}'.format(source,api_key)
         print(get_article_url)
 
     '''
@@ -74,8 +75,10 @@ def get_article(source):
         article_results = None
 
         if get_article_response['articles']
-            id = article_details_response.get('id')
-            title =                             article_results_response.get('article_result')
+            articles_results_list = get_articles_response['articles']
+            articles_results = process_articles(articles_results_list)
+            # id = article_details_response.get('id')
+            # title =                             article_results_response.get('article_result')
             # overview = article_details_response.get('overview')
             # poster = article_details_response.get('poster_path')
             # vote_average = article_details_response.get('poster_path')
@@ -85,7 +88,7 @@ def get_article(source):
 
 
 
-    return article_object
+    return article_results
 
 def process_results(articles_list):
     '''
@@ -111,7 +114,7 @@ def process_results(articles_list):
             article_object = Article(author,title,description,urlToImage,publishedAt,time)
             article_results.append(article_object)
 
-    print(article_object)
+    # print(article_object)
     return article_results
 
 
