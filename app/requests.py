@@ -77,15 +77,7 @@ def get_article(source):
         if get_article_response['articles']
             articles_results_list = get_articles_response['articles']
             articles_results = process_articles(articles_results_list)
-            # id = article_details_response.get('id')
-            # title =                             article_results_response.get('article_result')
-            # overview = article_details_response.get('overview')
-            # poster = article_details_response.get('poster_path')
-            # vote_average = article_details_response.get('poster_path')
-            # vote_count = article_details_response.get('vote_count')
-
-            # article_object = Article(id,title,overview,poster,vote_average,vote_count)
-
+            
 
 
     return article_results
