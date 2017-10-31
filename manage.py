@@ -9,7 +9,7 @@ app = create_app('development')
 manager = Manager(app)
 manager.add_command('server',Server)
 
-@manage.command
+@manager.command
 def test():
     """
     Run the test unit tests

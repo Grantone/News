@@ -28,7 +28,7 @@ def sources():
     # Getting sources request.args.get('sources_query')
     sources=get_article(id)
     source_id = id
-    title = f'{source_id}
+    title = f'{source_id}'
     print(sources)
     return redirect(url_for('index.html',title = title,source=source,source_id=source_id ))
 

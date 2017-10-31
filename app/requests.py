@@ -64,9 +64,9 @@ def get_article(source):
         get_article_url = 'https://newsapi.org/v1/articles?source={}&apiKey={}'.format(source,api_key)
         print(get_article_url)
 
-    '''
-    Function that gets the json response to our urlrequest
-    '''
+        '''
+        Function that gets the json response to our urlrequest
+        '''
 
     with urllib.request.urlopen(get_article_url) as url:
         get_article_url_data = url.read()
