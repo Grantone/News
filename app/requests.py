@@ -68,7 +68,7 @@ def get_article(source):
         Function that gets the json response to our urlrequest
         '''
 
-    with urllib.request.urlopen(get_article_url) as url:
+        with urllib.request.urlopen(get_article_url) as url:
         get_article_url_data = url.read()
         get_articles_response =json.loads(get_article_data)
 
@@ -77,7 +77,7 @@ def get_article(source):
         if get_article_response['articles']
             articles_results_list = get_articles_response['articles']
             articles_results = process_articles(articles_results_list)
-            
+
 
 
     return article_results
