@@ -1,13 +1,22 @@
-{% extends 'base.html'%}
+ {% extends 'base.html'%}
 <!-- Content block -->
 {% block content %}
 <div class="container">
-
   <!-- Poster background -->
-  <div class="row">
-    <!-- <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 posterPath" style="display:inline; height: 800px; background: url({) no-repeat center center"> -->
+  {% for article in articles %}
+  <div class="">
+    <h3>{{article.title}}</h3>
+    <div class="row">
+      <div class="col-md-2">
+        <img src="{{article.urlToImage}}" alt="">
+      </div>
+      <div class="col-md-10">
+        <p>{{article.description}}</p>
+        <p><strong>{{article.author}}</strong></p>
+      </div>
+    </div>
   </div>
-</div>
-
+  {% endfor %}
+  <!-- <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 posterPath" style="display:inline; height: 800px; background: url({) no-repeat center center"> -->
 </div>
 {% endblock %}
