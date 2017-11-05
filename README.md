@@ -6,7 +6,7 @@ By Granton Mchana
 
 ##Description
 
-This is a web application that displays, by use of a News API, a list of News sources and different articles. Users can select any news source they want and be directed to a series/ collection of other articles. The articles title, image, date of published and a  description. Once a user click on the article , they will take him/her to the source site.
+This is a web application that displays all sources and artocles, by use of a News API, a list of News sources and different articles. Users can select any news source they want and be directed to a series/ collection of other articles. The articles title, image, date of published and a  description. Once a user click on the article , they will take him/her to the source site.
 
 ####User Stories
 
