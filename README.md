@@ -17,7 +17,7 @@ Users should click on an article and read it fully from the news source.
 Specifications
 
 #### Behaviour	Input	Output
-Display Various News sources<br	The articles title, date, description and image are displayed
+Display Various News sources. The articles title, date, description and image are displayed
 Read the content of the article	then Click on the article and it takes him to the source's site that displays the articles
 Setup/Installation Requirements
 
